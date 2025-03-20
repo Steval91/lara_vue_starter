@@ -6,6 +6,7 @@ import { definePreset } from '@primeuix/themes';
 import Aura from '@primeuix/themes/aura';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import PrimeVue from 'primevue/config';
+import ConfirmationService from 'primevue/confirmationservice';
 import Ripple from 'primevue/ripple';
 import ToastService from 'primevue/toastservice';
 import type { DefineComponent } from 'vue';
@@ -31,22 +32,22 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 const MyPreset = definePreset(Aura, {
     semantic: {
         primary: {
-            50: '{gray.50}',
-            100: '{gray.100}',
-            200: '{gray.200}',
-            300: '{gray.300}',
-            400: '{gray.400}',
-            500: '{gray.500}',
-            600: '{gray.600}',
-            700: '{gray.700}',
-            800: '{gray.800}',
-            900: '{gray.900}',
-            950: '{gray.950}',
+            50: '#f7f7f7',
+            100: '#e1e1e1',
+            200: '#cfcfcf',
+            300: '#b1b1b1',
+            400: '#9e9e9e',
+            500: '#000000',
+            600: '#2d2d2d',
+            700: '#1f1f1f',
+            800: '#141414',
+            900: '#000000',
+            950: '#000000',
         },
         focusRing: {
             width: '1px',
             style: 'solid',
-            color: '{gray.500}',
+            color: '#000000',
             offset: '2.5px',
         },
     },
@@ -65,6 +66,7 @@ createInertiaApp({
                 },
                 ripple: true,
             })
+            .use(ConfirmationService)
             .use(ToastService)
             .directive('ripple', Ripple)
             .mount(el);
