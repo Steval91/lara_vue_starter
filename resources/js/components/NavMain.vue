@@ -8,6 +8,8 @@ defineProps<{
 }>();
 
 const page = usePage<SharedData>();
+const filterUrl = (url: string) => url.includes('?') ? url.split('?')[0] : url;
+
 </script>
 
 <template>
@@ -15,10 +17,10 @@ const page = usePage<SharedData>();
         <SidebarGroupLabel>Platform</SidebarGroupLabel>
         <SidebarMenu>
             <SidebarMenuItem v-for="item in items" :key="item.title">
-                <SidebarMenuButton as-child :is-active="item.href === page.url">
+                <SidebarMenuButton as-child :is-active="item.href === filterUrl(page.url)">
                     <Link :href="item.href">
-                        <component :is="item.icon" />
-                        <span>{{ item.title }}</span>
+                    <component :is="item.icon" />
+                    <span>{{ item.title }}</span>
                     </Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
